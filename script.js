@@ -13,6 +13,8 @@ var retMenorLarg = 30;
 var ca, co, H;
 var ang = 0;
 var mod = 0;
+var escalaInicialx = 1;
+var escalaInicialy = 1;
 
 function desenhar(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -20,6 +22,7 @@ function desenhar(){
     ctx.save();
         ctx.translate(x, y);
         ctx.rotate(ang);
+        ctx.scale(escalaInicialx,escalaInicialy);
         
         desanharRetangulos(-comp/2, -larg/2, comp, larg, "#ffc0cb");
         desanharRetangulos(-comp/2, -larg/2, lanternaComp, lanternaLarg, "#ff0000");
@@ -27,7 +30,7 @@ function desenhar(){
         desanharRetangulos((comp/2) - lanternaComp, -larg/2, lanternaComp, lanternaLarg, "#FFD700");
         desanharRetangulos((comp/2) - lanternaComp, larg/2 - lanternaLarg, lanternaComp, lanternaLarg, "#FFD700");
         desanharRetangulos(-comp/5, -larg/5, retMenorComp, retMenorLarg, "#FF69B4");
-
+        
     ctx.restore();
 
     requestAnimationFrame(desenhar);
@@ -58,7 +61,16 @@ document.onkeydown = function (evt){
     if(evt.keyCode === 39){ //tecla da direita
         ang += 0.1;
     } 
-        
+
+    if(evt.keyCode === 221){ //aumentar
+        escalaInicialx +=0.5
+        escalaInicialy +=0.5
+    }   
+    
+    if(evt.keyCode === 220){ //diminuir
+        escalaInicialx -=0.5
+        escalaInicialy -=0.5
+    } 
 } 
 
 requestAnimationFrame(desenhar);
