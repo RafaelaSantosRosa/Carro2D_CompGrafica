@@ -12,12 +12,17 @@ var retMenorComp = 70;
 var retMenorLarg = 30;
 var ca, co, H;
 var ang = 0;
-var mod = 0;
 var escalaInicialx = 1;
 var escalaInicialy = 1;
 
 function desenhar(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    let bgImg = new Image();
+    bgImg.src = 'pista.jpg';
+    bgImg.onload = () => {
+        ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
+    }
 
     ctx.save();
         ctx.translate(x, y);
